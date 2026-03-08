@@ -9,13 +9,27 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <div>
-      <h1>Praktikum Next.js Pages Router</h1> <br />
-      <p>Mahasiswa D4 Teknik Informatika</p>
+    <div style={{ textAlign: "center", marginTop: "80px" }}>
       
-      <Link href="/about">
-        Ke Halaman About
-      </Link>
+      {/* Judul halaman */}
+      <h1 className="text-3xl font-bold">Selamat Datang di Website Kami</h1>
+
+      {/* Deskripsi singkat */}
+      <p>
+        Website ini menyediakan berbagai informasi dan produk menarik
+        yang dapat kamu jelajahi dengan mudah.
+      </p>
+
+      {/* Gambar ilustrasi */}
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Image
+          src="/home-page.png"
+          alt="Ilustrasi Home"
+          width={400}
+          height={300}
+        />
+      </div>
+
     </div>
-  )
+  );
 }
