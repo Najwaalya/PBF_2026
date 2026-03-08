@@ -1,28 +1,21 @@
 import Navbar from "../Navbar";
+import { useRouter } from "next/router";
+
+const disableNavbar = ["/auth/login", "/auth/register"];
 
 type AppShellProps = {
   children: React.ReactNode;
 };
 
-const AppShell = ({ children }: AppShellProps) => {
+const AppShell = (props: AppShellProps) => {
+
+  const { children } = props;
+  const {pathname}= useRouter();
+
   return (
     <main>
-      <Navbar />
-
-      <div style={{ padding: "20px" }}>
-        {children}
-      </div>
-
-      <footer
-        style={{
-          marginTop: "40px",
-          padding: "20px",
-          backgroundColor: "#f2f2f2",
-          textAlign: "center",
-        }}
-      >
-        <p>© 2026 My Website</p>
-      </footer>
+      {!disableNavbar.includes(pathname) && <Navbar />}
+      {children}
     </main>
   );
 };
