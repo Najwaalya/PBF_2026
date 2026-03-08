@@ -1,15 +1,23 @@
-import { Router, useRouter } from "next/router";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-const HalamanProduk = () => {
-    //const {query} = useRouter();
-    //console.log(Router);
-    const {query} = useRouter();
-    return (
+export default function Product() {
+  const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    const isLogin = localStorage.getItem("isLogin");
+
+    if (!isLogin) {
+      router.push("/auth/login");
+    }
+  }, [router]);
+
+  return (
     <div>
-        <h1>Halaman Produk</h1>
-        <p>Produk: {query.id}</p>
+      <h1>Halaman Product</h1> <br />
+      <p>Produk: {id}</p><br />
+      <p>Selamat datang di halaman produk</p>
     </div>
-    );
-};
-
-export default HalamanProduk; 
+  );
+}
