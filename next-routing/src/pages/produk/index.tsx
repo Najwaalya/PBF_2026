@@ -4,10 +4,9 @@ type ProductType = {
   id: string;
   name: string;
   price: number;
-  size: string;
   category: string;
+  image: string;
 };
-
 
 const Kategori = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -23,14 +22,11 @@ const Kategori = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h1>Daftar Produk</h1>
 
       <button
-        onClick={() => {
-          console.log("KEKLIK!");
-          getProducts();
-        }}
+        onClick={getProducts}
         style={{
           backgroundColor: "#4CAF50",
           color: "white",
@@ -38,23 +34,44 @@ const Kategori = () => {
           border: "none",
           borderRadius: "8px",
           cursor: "pointer",
-          marginBottom: "16px",
+          marginBottom: "20px",
           fontWeight: "bold",
-          position: "relative",
-          zIndex: 10
         }}
       >
         🔄 Refresh Data
       </button>
 
-      {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.name}</h2>
-          <p>Harga: {product.price}</p>
-          <p>Ukuran: {product.size}</p>
-          <p>Kategori: {product.category}</p>
-        </div>
-      ))}
+      {/* LIST PRODUK */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        {products.map((product) => (
+          <div
+            key={product.id}
+            style={{
+              border: "1px solid #ddd",
+              borderRadius: "10px",
+              padding: "10px",
+              width: "200px",
+              boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+            }}
+          >
+            {/* GAMBAR */}
+            <img
+              src={product.image}
+              alt={product.name}
+              style={{
+                width: "100%",      // full lebar card
+                height: "150px",    // tinggi tetap
+                objectFit: "cover", // biar ga gepeng
+                borderRadius: "8px",
+              }}
+            />
+
+            <h3>{product.name}</h3>
+            <p>Harga: {product.price}</p>
+            <p>Kategori: {product.category}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
