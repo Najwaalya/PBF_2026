@@ -8,11 +8,12 @@ type ProductType = {
   image: string;
 };
 
-// 🔥 fetcher function
+// fetcher function
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
+
 const Kategori = () => {
-  // 🔥 pakai SWR
+  // pakai SWR
   const { data, error, isLoading, mutate } = useSWR("/api/produk", fetcher);
 
   // ambil data
@@ -39,7 +40,7 @@ const Kategori = () => {
         🔄 Refresh Data
       </button>
 
-      {/* ❌ Error */}
+      {/* Error */}
       {error && <p>Gagal mengambil data</p>}
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
