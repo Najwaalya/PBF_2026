@@ -21,11 +21,25 @@ const Kategori = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Daftar Produk</h1>
+      <h1
+        style={{
+          fontSize: "28px",
+          fontWeight: "bold",
+          marginBottom: "20px",
+          color: "#333",
+          textAlign: "center",
+          
+          paddingBottom: "5px",
+        }}
+      >
+        Daftar Produk
+      </h1>
 
-      {/* 🔄 Refresh manual */}
+      <br />
+
+      {/* Refresh manual */}
       <button
-        onClick={() => mutate()}
+        onClick={() => mutate(undefined, { revalidate: true })}
         style={{
           backgroundColor: "#4CAF50",
           color: "white",
@@ -37,7 +51,7 @@ const Kategori = () => {
           fontWeight: "bold",
         }}
       >
-        🔄 Refresh Data
+        Refresh Data
       </button>
 
       {/* Error */}
@@ -45,7 +59,7 @@ const Kategori = () => {
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
         
-        {/* 🔥 Skeleton Loading */}
+        {/* Skeleton Loading */}
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
               <div
